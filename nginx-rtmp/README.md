@@ -42,7 +42,7 @@ HLS 路徑
 
 #### 3. Streaming RTSP to server
 
-利用 FFmpeg 將 RTSP 串流打到剛剛啟動的 RTMP Server
+利用 FFmpeg 將 RTSP 串流打到剛剛啟動的 RTMP Server
 
 ```shell
 $ ffmpeg -rtsp_transport tcp -i rtsp://192.168.10.21/LV/ch4 -c:v copy -an  -f flv rtmp://192.168.3.147/live/ch7
@@ -65,11 +65,11 @@ $ ffmpeg -rtsp_transport tcp -i rtsp://192.168.10.21/LV/ch4 -c:v copy -an  -f fl
 
 此時可以用瀏覽器開啟 `http://{SERVER IP}:9900/app/viewer.html` 即可看到以下畫面
 
-![Chrome show 6ch](/pics/viewer-6ch.png)
+![Chrome show 6ch](./pics/viewer-6ch.png)
 
 此時 Server 的使用率如下
 
-![Server metrics](/pics/nginx-rtmp-6ch-metrics.png)
+![Server metrics](./pics/nginx-rtmp-6ch-metrics.png)
 
 1. CPU: 8%
 1. Mem: 133 M
