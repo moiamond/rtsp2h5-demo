@@ -1,5 +1,5 @@
 # 使用 HTML5 瀏覽 RTSP 串流 
-> 利用 NGINX, nginx-rtmp-module, FFmpeg
+> 利用 NGINX, nginx-rtmp-module, FFmpeg
 
 ## Demo
 
@@ -48,13 +48,13 @@ HLS 路徑
 $ ffmpeg -rtsp_transport tcp -i rtsp://192.168.10.21/LV/ch4 -c:v copy -an  -f flv rtmp://192.168.3.147/live/ch7
 ```
 
-可以到 `http://{SERVER IP}:9900/stat` 頁面，觀察目前 Server 接收到 rtmp 串流的資訊
-
+可以到 `http://{SERVER IP}:9900/stat` 頁面，觀察目前 Server 接收到 rtmp 串流的資訊
+
 #### 4. Check HLS Result
 
-這時 `nginx-rtmp-module` 會開始將接收到的 RTMP 串流，產生 HLS 相關檔案。以第三步的例子來看，HLS 網址為 `http://{SERVER IP}:9900/hls/ch7.m3u8`。
+這時 `nginx-rtmp-module` 會開始將接收到的 RTMP 串流，產生 HLS 相關檔案。以第三步的例子來看，HLS 網址為 `http://{SERVER IP}:9900/hls/ch7.m3u8`。
 
-此 Demo 會在第三步打6個 RTSP 串流到 Server，分別為
+此 Demo 會在第三步打6個 RTSP 串流到 Server，分別為
 
 1. `rtsp://192.168.10.21/LV/ch1`
 1. `rtsp://192.168.10.21/LV/ch2`
@@ -63,12 +63,12 @@ $ ffmpeg -rtsp_transport tcp -i rtsp://192.168.10.21/LV/ch4 -c:v copy -an  -f fl
 1. `rtsp://192.168.10.21/LV/ch5`
 1. `rtsp://192.168.10.21/LV/ch7`
 
-此時可以用瀏覽器開啟 `http://{SERVER IP}:9900/app/viewer.html` 即可看到以下畫面
+此時可以用瀏覽器開啟 `http://{SERVER IP}:9900/app/viewer.html` 即可看到以下畫面
 
 ![Chrome show 6ch](/pics/viewer-6ch.png)
 
 此時 Server 的使用率如下
-
+
 ![Server metrics](/pics/nginx-rtmp-6ch-metrics.png)
 
 1. CPU: 8%
