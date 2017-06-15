@@ -20,6 +20,7 @@ $ python server.py
 #### 3. Run 6 FFmpeg to generate HLS
 
 ```shell
+$ cd app
 $ ffmpeg -rtsp_transport tcp \
     -i rtsp://192.168.10.21/LV/ch7 \
     -c:v copy \
