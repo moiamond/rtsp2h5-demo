@@ -10,10 +10,10 @@
  * sudo apt-get install ffmpeg
  *
  * start server:
- * node live.js
+ * node rtsp2fmp4.js 9000
  *
  * browse to:
- * http://localhost:8080
+ * http://localhost:9000
  */
 
 var http = require('http');
@@ -24,18 +24,18 @@ var camera = {rtsp: null, liveStarted: false, mp4Headers: []};
 // handle each client request by instantiating a new FFMPEG instance
 http.createServer(function (request, response) {
 
-  // We need to get the URL of our RSTP stream from request URL eg. http://localhost:8080/{streamIP}
-  var streamURL = getStreamAddressFromUrl(request.url);
+    // We need to get the URL of our RSTP stream from request URL eg. http://localhost:8080/{streamIP}
+    var streamURL = getStreamAddressFromUrl(request.url);
 
-  // No stream address given - serve static HTML video player
-  if (!streamURL) {
-    console.log("GET / from: " + request.connection.remoteAddress);
+    // No stream address given - serve static HTML video player
+    if (!streamURL) {
+        console.log("GET / from: " + request.connection.remoteAddress);
 
-    response.writeHead(200, {"Content-Type": "text/html"});
-    response.end(
-      '<video id="video" autoplay></video><br />rtsp://<input id="rtsp">' +
-      '<button onclick="document.getElementById(\'video\').src=\'http://'+ request.headers.host +'/\' + document.getElementById(\'rtsp\').value">Connect</button>');
-      return true;
+        response.writeHead(200, {"Content-Type": "text/html"});
+        response.end(
+            '<video id="video" autoplay width="320" height="264" ></video><br />rtsp://<input id="rtsp">' +
+            '<button onclick="document.getElementById(\'video\').src=\'http://'+ request.headers.host +'/\' + document.getElementById(\'rtsp\').value">Connect</button>');
+        return true;
     }
 
     // Skip rubbish
@@ -47,14 +47,13 @@ http.createServer(function (request, response) {
 
     console.log("GET /"+ streamURL +" from: " + request.connection.remoteAddress + ':' + request.connection.remotePort);
 
-    if (camera.rtsp != streamURL) {
-        camera.rtsp = streamURL;
 
-        if (typeof camera.liveffmpeg !== "undefined") {
-            console.log("Changing live stream to: " + streamURL);
-            camera.liveStarted = false;
-            camera.liveffmpeg.kill();
-        }
+    camera.rtsp = streamURL;
+
+    if (typeof camera.liveffmpeg !== "undefined") {
+        console.log("Changing live stream to: " + streamURL);
+        camera.liveStarted = false;
+        camera.liveffmpeg.kill();
     }
 
     // Range HTTP response needs a proper header
@@ -130,7 +129,7 @@ http.createServer(function (request, response) {
 
     return true;
 
-}).listen(9000);
+}).listen(process.argv[2]);
 
 var getStreamAddressFromUrl = function(requestUrl) {
 
