@@ -10,7 +10,7 @@ Server side:
 * Use ffmpeg to generate HLS
 
 Client side:
-* Use Video.js to playback HLS
+* Use [video.js](https://github.com/videojs/video.js) to playback HLS
 
 ## [NGINX RTMP Module + FFmpeg](./nginx-rtmp/README.md)
 
@@ -22,7 +22,7 @@ Server side:
 * Use ffmpeg to restreaming RTSP to RTMP server
 
 Client side:
-* Use Video.js to playback HLS
+* Use [video.js](https://github.com/videojs/video.js) to playback HLS
 
 ## [FFmpeg to generate HTTP-MP4](./http-mp4/README.md)
 
