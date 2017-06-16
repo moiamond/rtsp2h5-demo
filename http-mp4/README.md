@@ -32,3 +32,13 @@ $ node rtsp2fmp4.js 9006
 #### 4. View in the browser
 
 使用瀏覽器開啟 `hppt://{SERVER IP}:9000/app/viewer.html`
+
+
+低延遲
+
+```
+      ~0s delay
+RTSP -----------> HTTP-fMP4
+```
+
+![lantency](../pics/low-latency.png)

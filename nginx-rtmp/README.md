@@ -65,11 +65,20 @@ $ ffmpeg -rtsp_transport tcp -i rtsp://192.168.10.21/LV/ch7 -c:v copy -an  -f fl
 
 此時可以用瀏覽器開啟 `http://{SERVER IP}:9900/app/viewer.html` 即可看到以下畫面
 
-![Chrome show 6ch](./pics/viewer-6ch.png)
+![Chrome show 6ch](../pics/viewer-6ch.png)
 
 此時 Server 的使用率如下
 
-![Server metrics](./pics/nginx-rtmp-6ch-metrics.png)
+![Server metrics](../pics/nginx-rtmp-6ch-metrics.png)
 
 1. CPU: 8%
 1. Mem: 133 M
+
+網路延遲
+
+```
+      4s delay         5s delay
+RTSP ----------> RTMP ----------> HLS
+```
+
+![lantency](../pics/rtsp-rtmp-hls-lantency.png)
