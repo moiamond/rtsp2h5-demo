@@ -45,7 +45,7 @@ HLS 路徑
 利用 FFmpeg 將 RTSP 串流打到剛剛啟動的 RTMP Server
 
 ```shell
-$ ffmpeg -rtsp_transport tcp -i rtsp://192.168.10.21/LV/ch4 -c:v copy -an  -f flv rtmp://192.168.3.147/live/ch7
+$ ffmpeg -rtsp_transport tcp -i rtsp://192.168.10.21/LV/ch7 -c:v copy -an  -f flv rtmp://192.168.3.147/live/ch7
 ```
 
 可以到 `http://{SERVER IP}:9900/stat` 頁面，觀察目前 Server 接收到 rtmp 串流的資訊
