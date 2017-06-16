@@ -6,8 +6,8 @@
 URL: `http://{SERVER IP}:7000/app/viewer.html`
 
 Server side:
-* Use python to host a web server
-* Use ffmpeg to generate HLS
+* Use Python to host a web server
+* Use FFmpeg to generate HLS
 
 Client side:
 * Use [video.js](https://github.com/videojs/video.js) to playback HLS
@@ -18,8 +18,8 @@ URL: `http://{SERVER IP}:8000/app/viewer.html`
 
 Server side:
 * Use NGINX to host a web server
-* Use nginx-rtmp-module to host a RTMP server
-* Use ffmpeg to restreaming RTSP to RTMP server
+* Use nginx-rtmp-module to serve RTMP protocol
+* Use FFmpeg to restream RTSP to RTMP server
 
 Client side:
 * Use [video.js](https://github.com/videojs/video.js) to playback HLS
@@ -29,8 +29,8 @@ Client side:
 URL: `http://{SERVER IP}:9000/app/viewer.html`
 
 Server side:
-* Use python to host a web server
-* Use nodejs to response resuqsted RTSP stream to Fragmented mp4
+* Use Python to host a web server
+* Use Nodejs to response requested RTSP stream to Fragmented mp4
 
 Client side:
 * Use native video tag to playback Fragmented mp4
