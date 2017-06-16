@@ -30,7 +30,7 @@ URL: `http://{SERVER IP}:9000/app/viewer.html`
 
 Server side:
 * Use Python to host a web server
-* Use Nodejs to response requested RTSP stream to Fragmented mp4
+* Use Node.js to response requested RTSP stream to Fragmented mp4
 
 Client side:
 * Use native video tag to playback Fragmented mp4
