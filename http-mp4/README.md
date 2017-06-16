@@ -37,7 +37,7 @@ $ node rtsp2fmp4.js 9006
 低延遲
 
 ```
-      ~0s delay
+      ~0s delay
 RTSP -----------> HTTP-fMP4
 ```
 
