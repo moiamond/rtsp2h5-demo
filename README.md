@@ -35,3 +35,13 @@ Server side:
 Client side:
 * Use native video tag to playback Fragmented mp4
 
+## [FFmpeg to generate HTTP-MP4](./http-mp4-go/README.md)
+
+URL: `http://{SERVER IP}:9090/app/viewer.html`
+
+Server side:
+* Use Go to host a web server and response requested RTSP stream to Fragmented mp4
+
+Client side:
+* Use native video tag to playback Fragmented mp4
+
