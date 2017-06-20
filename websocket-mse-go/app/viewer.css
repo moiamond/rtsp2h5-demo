@@ -1,0 +1,32 @@
+body,ul,li{margin:0;padding:0;}
+.xttblog{
+ width: 1000px;
+ height: 170px;
+ margin-top:50px;
+ margin-left: auto;
+ margin-right: auto;
+}
+.box{margin-left: 5px;margin-top: 5px;list-style-type:none;}
+.box:after{
+ content: ".";
+ display: block;
+ line-height: 0;
+ width:0;
+ height: 0;
+ clear: both;
+ visibility: hidden;
+ overflow: hidden;
+}
+.box li{float:left;line-height: 230px;}
+.box li a,.box li a:visited{
+ display:block;
+ border: 5px solid #ccc;
+ width: 640px;
+ height: 480px;
+ text-align: center;
+ margin-left: -5px;
+ margin-top: -5px;
+ position: relative;
+ z-index: 1;
+}
+.box li a:hover{border-color: #f00;z-index: 2;}

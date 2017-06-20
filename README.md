@@ -35,3 +35,12 @@ Server side:
 Client side:
 * Use native video tag to playback Fragmented mp4
 
+## [Websocket to MSE](./websocket-mse-go/README.md)
+
+URL: `http://{SERVER IP}:9090/app/viewer.html`
+
+Server side:
+* Use Go to host a web server and serve a WebSocket stream
+
+Client side:
+* Use MSE to playback

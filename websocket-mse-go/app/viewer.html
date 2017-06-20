@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="./viewer.css">
+</head>
+<body>
+	<h1>RTSP to Websocket Demo</h1>
+
+	<div class="xttblog">
+	<ul class="box">
+		<li>
+			<video id="video_0" controls autoplay preload="auto" width="320" height="264">
+			</video>
+		</li>
+		<li>
+			<video id="video_1" controls autoplay preload="auto" width="320" height="264">
+			</video>
+		</li>
+		<li>
+			<video id="video_2" controls autoplay preload="auto" width="320" height="264">
+			</video>
+		</li>
+		<li>
+			<video id="video_3" controls autoplay preload="auto" width="320" height="264">
+			</video>
+		</li>
+		<li>
+			<video id="video_4" controls autoplay preload="auto" width="320" height="264">
+			</video>
+		</li>
+		<li>
+			<video id="video_5" controls autoplay preload="auto" width="320" height="264">
+			</video>
+		</li>
+	</ul>
+</div>
+
+	<script>
+
+    var mimeCodec = 'video/mp4; codecs="avc1.42e028"';
+
+    var videoWall = [];//document.getElementById('video_1');
+    var sourceBufferList = [];
+    var mediaSourceList = [];
+    var chList = [ch1, ch2, ch3, ch4, ch5, ch7]
+
+    createMediaSource();
+
+    function createMediaSource() {
+        if ('MediaSource' in window && MediaSource.isTypeSupported(mimeCodec)) {
+            for (i = 0; i < 6; i++) {
+                var ms = new MediaSource;
+                var vd = document.getElementById('video_'+i);
+                mediaSourceList.push(ms);
+                videoWall.push(vd)
+
+                videoWall[i].src = URL.createObjectURL(mediaSourceList[i]);
+                mediaSourceList[i].addEventListener('sourceopen', chList[i]);
+            }
+
+            //video.src = URL.createObjectURL(mediaSource[0]);
+            //mediaSource[0].addEventListener('sourceopen', ch1);
+        } else {
+            console.error('Unsupported MIME type or codec: ', mimeCodec);
+        }
+
+        console.log("Done with createMediaSource");
+    }
+	function ch1(_) {
+        addSourceBuffer(0, "ws://192.168.3.147:9090/192.168.10.21/LV/ch1");
+	}
+    function ch2(_) {
+        addSourceBuffer(1, "ws://192.168.3.147:9090/192.168.10.21/LV/ch2");
+    }
+    function ch3(_) {
+        addSourceBuffer(2, "ws://192.168.3.147:9090/192.168.10.21/LV/ch3");
+    }
+    function ch4(_) {
+        addSourceBuffer(3, "ws://192.168.3.147:9090/192.168.10.21/LV/ch4");
+    }
+    function ch5(_) {
+        addSourceBuffer(4, "ws://192.168.3.147:9090/192.168.10.21/LV/ch5");
+    }
+    function ch7(_) {
+        addSourceBuffer(5, "ws://192.168.3.147:9090/192.168.10.21/LV/ch7");
+    }
+    function addSourceBuffer (idx, wsurl) {
+
+        sourceBufferList.push(mediaSourceList[idx].addSourceBuffer(mimeCodec));
+
+
+        videoWall[idx].addEventListener('canplay', function () {
+            videoWall[idx].play();
+        });
+
+        console.log("Done with addSourceBuffer");
+
+        var ws = new WebSocket(wsurl);
+        ws.binaryType = "arraybuffer";
+
+
+        ws.onmessage = function (evt) {
+            if (evt.data instanceof ArrayBuffer) {
+                sourceBufferList[idx].appendBuffer(new Uint8Array(evt.data));
+            }
+        };
+
+        ws.onclose = function(evt) {
+            console.log("WebSocket is closed: ", evt.reason, evt.code);
+        };
+
+        ws.onerror = function (evt) {
+            console.log("WebSocket error: ", evt.data);
+        }
+    }
+
+</script>
+</body>
+</html>
