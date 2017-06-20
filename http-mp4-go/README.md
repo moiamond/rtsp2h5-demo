@@ -20,7 +20,7 @@ $ go run web.go
 
 #### 3. View in the browser
 
-使用瀏覽器開啟 `hppt://{SERVER IP}:9090/app/viewer.html`
+使用瀏覽器開啟 `hppt://{SERVER IP}:9000/app/viewer.html`
 
 
 低延遲

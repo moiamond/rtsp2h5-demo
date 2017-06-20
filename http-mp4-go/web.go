@@ -96,7 +96,7 @@ func main() {
 	http.HandleFunc("/192.168.10.21/LV/ch4", ch4)
 	http.HandleFunc("/192.168.10.21/LV/ch5", ch5)
 	http.HandleFunc("/192.168.10.21/LV/ch7", ch7)
-	err := http.ListenAndServe(":9090", nil)
+	err := http.ListenAndServe(":9000", nil)
 
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
