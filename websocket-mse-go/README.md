@@ -1,5 +1,5 @@
 # 使用 HTML5 瀏覽 RTSP 串流 
-> 利用 FFmpeg
+> 使用 FFmpeg transmux 成 Fragmented MP4 後，利用 WebSocket 傳輸到 Client 端
 
 ## Demo
 
@@ -15,6 +15,7 @@ $ cd rtsp2h5-demo/websocket-mse-go
 #### 2. Run HTTP server
 
 ```shell
+$ go get github.com/gorilla/websocket
 $ go run main.go
 ```
 
