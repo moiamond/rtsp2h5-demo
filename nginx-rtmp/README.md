@@ -32,13 +32,13 @@ RTMP Endpoint
 > rtmp://{SERVER IP}:1935/live/{YOUR STREAM}
 
 RTMP 狀態
-> http://{SERVER IP}:9900/stat
+> http://{SERVER IP}:8000/stat
 
 HLS 路徑
-> http://{SERVER IP}:9900/hls/{YOUR STREAM}.m3u8
+> http://{SERVER IP}:8000/hls/{YOUR STREAM}.m3u8
 
 測試 6 channel 的網頁
-> http://{SERVER IP}:9900/app/viewer.html
+> http://{SERVER IP}:8000/app/viewer.html
 
 #### 3. Streaming RTSP to server
 
@@ -52,7 +52,7 @@ $ ffmpeg -rtsp_transport tcp -i rtsp://192.168.10.21/LV/ch7 -c:v copy -an  -f fl
 
 #### 4. Check HLS Result
 
-這時 `nginx-rtmp-module` 會開始將接收到的 RTMP 串流，產生 HLS 相關檔案。以第三步的例子來看，HLS 網址為 `http://{SERVER IP}:9900/hls/ch7.m3u8`。
+這時 `nginx-rtmp-module` 會開始將接收到的 RTMP 串流，產生 HLS 相關檔案。以第三步的例子來看，HLS 網址為 `http://{SERVER IP}:8000/hls/ch7.m3u8`。
 
 此 Demo 會在第三步打6個 RTSP 串流到 Server，分別為
 
@@ -63,7 +63,7 @@ $ ffmpeg -rtsp_transport tcp -i rtsp://192.168.10.21/LV/ch7 -c:v copy -an  -f fl
 1. `rtsp://192.168.10.21/LV/ch5`
 1. `rtsp://192.168.10.21/LV/ch7`
 
-此時可以用瀏覽器開啟 `http://{SERVER IP}:9900/app/viewer.html` 即可看到以下畫面
+此時可以用瀏覽器開啟 `http://{SERVER IP}:8000/app/viewer.html` 即可看到以下畫面
 
 ![Chrome show 6ch](../pics/viewer-6ch.png)
 
